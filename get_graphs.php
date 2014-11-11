@@ -33,9 +33,10 @@ echo "$cmd\n";
 
 $ch = curl_init();
 $headers = array(
-	'x-nnws-auth' => "$user:$signature",
-	'date' => date('r', $timestamp)
+	"x-nnws-auth:$user:$signature",
+	"date:".date('r', $timestamp)
 );
+
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_URL, $uri);
